@@ -1,0 +1,26 @@
+spring:
+  application.name: Agentic-AI
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/agentic_ai
+    username: admin
+    password: "1234"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  ai:
+    google:
+      genai:
+        api-key: ${GOOGLE_GEMINI_KEY}
+        chat.options.model: gemini-3-flash-preview
+
+
+    ai:
+      vectorstore:
+        pgvector:
+          table-name: vector_store
+          dimensions: 768
+
