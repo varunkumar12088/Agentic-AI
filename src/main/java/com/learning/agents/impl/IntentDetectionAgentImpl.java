@@ -2,12 +2,13 @@ package com.learning.agents.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.learning.agents.IntentDetectionAgent;
 import com.learning.constant.AgentConstant;
 import com.learning.domain.intent.IntentType;
-import com.learning.domain.model.AgentContext;
 import com.learning.domain.model.UserQuery;
 import com.learning.dto.IntentDetectionResult;
 import com.learning.dto.IntentRewrite;
+import com.learning.util.DataParseUtil;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Component;
 
@@ -15,16 +16,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class IntentDetectionAgent {
+public class IntentDetectionAgentImpl implements IntentDetectionAgent {
 
     private final ChatClient chatClient;
     private final ObjectMapper objectMapper;
 
-    public IntentDetectionAgent(ChatClient.Builder builder, ObjectMapper objectMapper) {
+    public IntentDetectionAgentImpl(ChatClient.Builder builder, ObjectMapper objectMapper) {
         this.chatClient = builder.build();
         this.objectMapper = objectMapper;
     }
 
+    @Override
     public IntentDetectionResult detect(UserQuery query) {
         String response = chatClient
                 .prompt(buildPrompt(query.getMessage()))
@@ -33,12 +35,12 @@ public class IntentDetectionAgent {
         try {
             JsonNode root = objectMapper.readTree(response);
             String heading = root.path("heading").asText();
-            IntentType primaryIntent = parseIntent(root.path("primaryIntent").asText());
+            IntentType primaryIntent = DataParseUtil.parseIntent(root.path("primaryIntent").asText());
 
             List<IntentRewrite> rewrites = new ArrayList<>();
 
             for (JsonNode node : root.path("intents")) {
-                IntentType intent = parseIntent(node.path("intent").asText());
+                IntentType intent = DataParseUtil.parseIntent(node.path("intent").asText());
                 String rewrittenQuery = node.path("rewrittenQuery").asText();
                 String queryHeading = node.path("queryHeading").asText();
                 double confidence = node.path("confidence").asDouble(0.0);
@@ -75,14 +77,6 @@ public class IntentDetectionAgent {
                             0.0
                     ))
             );
-        }
-    }
-
-    private IntentType parseIntent(String raw) {
-        try {
-            return IntentType.valueOf(raw.trim().toUpperCase());
-        } catch (Exception e) {
-            return IntentType.UNKNOWN;
         }
     }
 

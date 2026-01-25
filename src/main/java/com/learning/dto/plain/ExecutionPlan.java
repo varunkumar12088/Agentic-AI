@@ -9,5 +9,6 @@ public class ExecutionPlan {
 
     private String planId;
     private String intent;
+    private String rewrittenQuery;
     private List<PlanStep> steps;
 }
