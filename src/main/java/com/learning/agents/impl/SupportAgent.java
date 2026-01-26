@@ -44,11 +44,9 @@ public class SupportAgent implements Agent<SupportRequest, SupportResponse>  {
 
             for (PlanStep step : plan.getSteps()) {
 
-                SpecializedAgent agent =
-                        registry.get(step.getTarget());
+                SpecializedAgent agent = registry.get(step.getTarget());
 
-                StepResult stepResult =
-                        agent.execute(context, step);
+                StepResult stepResult = agent.execute(context, step);
 
                 if (!stepResult.isSuccess()) {
                     failed = true;

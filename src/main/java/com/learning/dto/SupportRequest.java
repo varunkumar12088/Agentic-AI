@@ -2,15 +2,10 @@ package com.learning.dto;
 
 import com.learning.dto.plain.ExecutionPlan;
 import com.learning.dto.plain.PlannedQuery;
-import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @param originalMessage Original user message (for reference / fallback)
- * @param plans           All execution plans (1 per intent)
- */
 public record SupportRequest(String sessionId, String originalMessage, List<ExecutionPlan> plans) {
 
     public PlannedQuery toPlannedQuery(ExecutionPlan plan) {
@@ -43,12 +38,10 @@ public record SupportRequest(String sessionId, String originalMessage, List<Exec
 
     private String extractRewrittenQuery(ExecutionPlan plan) {
 
-        // Best case: ExecutionPlan already stores rewritten query
         if (plan.getRewrittenQuery() != null) {
             return plan.getRewrittenQuery();
         }
 
-        // Fallback: original user message
         return this.originalMessage;
     }
 }
