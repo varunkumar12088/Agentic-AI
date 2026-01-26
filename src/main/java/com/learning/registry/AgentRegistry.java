@@ -2,11 +2,13 @@ package com.learning.registry;
 
 import com.learning.agents.SpecializedAgent;
 import com.learning.domain.intent.IntentType;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Component
 public class AgentRegistry {
 
     private final Map<IntentType, SpecializedAgent> agents;

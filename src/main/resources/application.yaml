@@ -6,16 +6,19 @@ spring:
     username: admin
     password: "1234"
 
+  autoconfigure:
+    exclude:
+      - org.springframework.ai.autoconfigure.chat.ChatAutoConfiguration
+      - org.springframework.ai.autoconfigure.vectorstore.VectorStoreAutoConfiguration
+      - org.springframework.ai.autoconfigure.embedding.EmbeddingAutoConfiguration
+      - org.springframework.ai.autoconfigure.observation.ObservationAutoConfiguration
+      - org.springframework.ai.model.google.genai.autoconfigure.chat.GoogleGenAiChatAutoConfiguration
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
-  ai:
-    google:
-      genai:
-        api-key: ${GOOGLE_GEMINI_KEY}
-        chat.options.model: gemini-3-flash-preview
 
 
     ai:
@@ -24,3 +27,7 @@ spring:
           table-name: vector_store
           dimensions: 768
 
+ai:
+  gemini:
+    api-key: ${GOOGLE_GEMINI_KEY}
+    reasoning: gemini-3-flash-preview
