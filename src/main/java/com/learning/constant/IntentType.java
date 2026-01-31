@@ -1,4 +1,4 @@
-package com.learning.domain.intent;
+package com.learning.constant;
 
 public enum IntentType {
     CUSTOMER_SUPPORT,

@@ -1,6 +1,5 @@
 package com.learning.domain.model;
 
-import com.learning.domain.intent.IntentType;
 import lombok.Data;
 
 @Data

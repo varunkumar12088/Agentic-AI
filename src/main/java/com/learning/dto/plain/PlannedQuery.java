@@ -1,6 +1,6 @@
 package com.learning.dto.plain;
 
-import com.learning.domain.intent.IntentType;
+import com.learning.constant.IntentType;
 import com.learning.dto.IntentDetectionResult;
 import com.learning.dto.IntentRewrite;
 import lombok.AllArgsConstructor;

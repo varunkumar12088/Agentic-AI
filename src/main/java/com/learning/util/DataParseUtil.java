@@ -1,6 +1,6 @@
 package com.learning.util;
 
-import com.learning.domain.intent.IntentType;
+import com.learning.constant.IntentType;
 
 public class DataParseUtil {
 

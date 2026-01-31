@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learning.agents.IntentDetectionAgent;
 import com.learning.constant.AgentConstant;
-import com.learning.domain.intent.IntentType;
+import com.learning.constant.IntentType;
 import com.learning.domain.model.UserQuery;
 import com.learning.dto.IntentDetectionResult;
 import com.learning.dto.IntentRewrite;

@@ -1,7 +1,7 @@
 package com.learning.registry;
 
 import com.learning.agents.SpecializedAgent;
-import com.learning.domain.intent.IntentType;
+import com.learning.constant.IntentType;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

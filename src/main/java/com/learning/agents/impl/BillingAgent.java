@@ -1,7 +1,7 @@
 package com.learning.agents.impl;
 
 import com.learning.agents.SpecializedAgent;
-import com.learning.domain.intent.IntentType;
+import com.learning.constant.IntentType;
 import com.learning.dto.plain.PlanStep;
 import com.learning.execution.ExecutionContext;
 import com.learning.execution.StepResult;

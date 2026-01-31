@@ -1,6 +1,6 @@
 package com.learning.dto;
 
-import com.learning.domain.intent.IntentType;
+import com.learning.constant.IntentType;
 
 import java.util.List;
 
