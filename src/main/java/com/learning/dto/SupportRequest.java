@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public record SupportRequest(String sessionId, String originalMessage, List<ExecutionPlan> plans) {
+public record SupportRequest(String sessionId,
+                             String originalMessage,
+                             List<ExecutionPlan> plans) {
 
     public PlannedQuery toPlannedQuery(ExecutionPlan plan) {
 

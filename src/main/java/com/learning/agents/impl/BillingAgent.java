@@ -18,6 +18,7 @@ public class BillingAgent implements SpecializedAgent {
 
     @Override
     public StepResult execute(ExecutionContext context, PlanStep step) {
+
         return null;
     }
 }
