@@ -1,9 +1,11 @@
 package com.learning.dto;
 
+import com.learning.domain.intent.IntentType;
 import com.learning.dto.plain.ExecutionPlan;
 import com.learning.dto.plain.PlannedQuery;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public record SupportRequest(String sessionId, String originalMessage, List<ExecutionPlan> plans) {
@@ -12,7 +14,8 @@ public record SupportRequest(String sessionId, String originalMessage, List<Exec
 
         return new PlannedQuery(
                 this.sessionId,
-                plan.getIntent(),
+                IntentType.BILLING,
+                Arrays.asList(IntentType.BILLING, IntentType.CUSTOMER_SUPPORT),
                 extractRewrittenQuery(plan)
         );
     }

@@ -8,6 +8,4 @@ public class UserQuery {
 
     private final String userId;
     private final String message;
-    private final IntentType intent;
-    private final long timestamp;
 }

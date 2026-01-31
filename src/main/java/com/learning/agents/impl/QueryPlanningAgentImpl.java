@@ -36,7 +36,7 @@ public class QueryPlanningAgentImpl implements QueryPlanningAgent {
                 .prompt(prompt)
                 .call()
                 .content();
-
+        System.out.println("response ::" + response);
         try {
             return mapper.readValue(response, ExecutionPlan.class);
         } catch (Exception e) {
@@ -46,10 +46,10 @@ public class QueryPlanningAgentImpl implements QueryPlanningAgent {
     }
 
     private String buildPrompt(PlannedQuery input) {
-        return  AgentConstant.QUERY_PLANING.formatted(input.getRewrittenQuery());
+        return  AgentConstant.QUERY_PLANING.formatted(input.getPrimaryIntent(), input.getIntents(), input.getQuery());
     }
 
     private String buildRegenerationPrompt(PlannedQuery input, String failureReason) {
-        return AgentConstant.QUERY_PAINING_FAILED.formatted(failureReason, input.getRewrittenQuery());
+        return AgentConstant.QUERY_PAINING_FAILED.formatted(failureReason, input.getQuery());
     }
 }

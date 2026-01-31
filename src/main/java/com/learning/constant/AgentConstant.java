@@ -43,30 +43,42 @@ public class AgentConstant {
         "%s"
             """;
     public static final String QUERY_PLANING = """
-            You are an execution planner for a telecom AI system.
-                
-                Your task is to generate a step-by-step execution plan
-                to solve the user's request.
-                
-                Rules:
-                - Use ONLY the actions listed below
-                - Steps must be in correct order
-                - Keep steps minimal and deterministic
-                - Do NOT execute anything
-                - Do NOT explain
-                
-                Available actions:
-                - CALL_AGENT
-                - FETCH_DATA
-                - VERIFY
-                - APPLY_DECISION
-                - RESPOND
-                
-                Available agents:
-                - BillingAgent
-                - NetworkAgent
-                - VerificationAgent
-                - SupportAgent
+            You are an execution planning engine for a telecom AI system.
+            
+            Your task is to generate a minimal, ordered execution plan
+            to solve the user's request based on the detected intent(s).
+            
+            You MUST decide WHAT actions should be performed,
+            NOT how they are executed.
+            
+            Available intents/target (already detected):
+            - CUSTOMER_SUPPORT
+            - BILLING
+            - NETWORK
+            - VERIFICATION
+            - TECHNICAL_ISSUE
+            - PLAN_UPGRADE
+            - COMPLAINT
+            - UNKNOWN
+            
+            Available actions (use ONLY these):
+            - CALL_AGENT
+            - FETCH_DATA
+            - VERIFY
+            - APPLY_DECISION
+            - RESPOND
+           
+            
+            Rules:
+            - Steps MUST be in correct execution order
+            - Keep steps minimal and deterministic
+            - Use ONLY listed actions and agents
+            - Do NOT execute any step
+            - Do NOT explain
+            - Do NOT add extra text
+            - Output MUST be valid JSON
+            - If intent is UNKNOWN, respond directly
+            
                 
                 Output MUST be valid JSON.
                 
@@ -78,12 +90,15 @@ public class AgentConstant {
                     {
                       "stepNumber": 1,
                       "action": "CALL_AGENT",
-                      "target": "BillingAgent",
+                      "target": "CUSTOMER_SUPPORT",
                       "description": "Validate billing details",
                       "mandatory": true
                     }
                   ]
                 }
+                Detected intents:
+                Primary: %s
+                All intents: %s
                 
                 User request:
                 "%s"
