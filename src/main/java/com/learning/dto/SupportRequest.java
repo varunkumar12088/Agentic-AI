@@ -41,10 +41,6 @@ public record SupportRequest(String sessionId, String originalMessage, List<Exec
 
     private String extractRewrittenQuery(ExecutionPlan plan) {
 
-        if (plan.getRewrittenQuery() != null) {
-            return plan.getRewrittenQuery();
-        }
-
         return this.originalMessage;
     }
 }

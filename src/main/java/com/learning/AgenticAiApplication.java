@@ -2,6 +2,7 @@ package com.learning;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learning.properties.AIProperties;
+import com.learning.util.JsonUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,7 +18,7 @@ public class AgenticAiApplication {
 
 	@Bean
 	public ObjectMapper getObjectMapper() {
-		return new ObjectMapper();
+		return JsonUtil.mapper;
 	}
 
 }

@@ -8,7 +8,6 @@ import java.util.Map;
 public class ExecutionContext {
 
     private String sessionId;
-    private String intent;
     private String planId;
 
     // Shared data between steps

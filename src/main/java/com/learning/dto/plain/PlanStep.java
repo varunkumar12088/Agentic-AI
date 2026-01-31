@@ -10,6 +10,7 @@ public class PlanStep {
     private int stepNumber;
     private Action action;
     private IntentType target;
+    private String query;
     private String description;
     private boolean mandatory;
 }

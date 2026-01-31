@@ -36,7 +36,7 @@ public class QueryPlanningAgentImpl implements QueryPlanningAgent {
                 .prompt(prompt)
                 .call()
                 .content();
-        System.out.println("response ::" + response);
+
         try {
             return mapper.readValue(response, ExecutionPlan.class);
         } catch (Exception e) {

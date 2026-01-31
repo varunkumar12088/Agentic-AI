@@ -3,6 +3,7 @@ package com.learning.agents.impl;
 import com.learning.agents.Agent;
 import com.learning.agents.QueryPlanningAgent;
 import com.learning.agents.SpecializedAgent;
+import com.learning.constant.IntentType;
 import com.learning.dto.SupportRequest;
 import com.learning.dto.SupportResponse;
 import com.learning.dto.plain.ExecutionPlan;
@@ -37,7 +38,6 @@ public class SupportAgent implements Agent<SupportRequest, SupportResponse>  {
 
             ExecutionContext context = new ExecutionContext();
             context.setSessionId(request.sessionId());
-            context.setIntent(plan.getIntent());
             context.setPlanId(plan.getPlanId());
 
             boolean failed = false;
@@ -70,7 +70,7 @@ public class SupportAgent implements Agent<SupportRequest, SupportResponse>  {
 
             results.add(new PlanExecutionResult(
                     plan.getPlanId(),
-                    DataParseUtil.parseIntent(plan.getIntent()),
+                    IntentType.NETWORK,
                     !failed,
                     "",
                     context

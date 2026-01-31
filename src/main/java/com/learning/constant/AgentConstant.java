@@ -85,7 +85,6 @@ public class AgentConstant {
                 Output format:
                 {
                   "planId": "unique-id",
-                  "intent": "INTENT_NAME",
                   "steps": [
                     {
                       "stepNumber": 1,
